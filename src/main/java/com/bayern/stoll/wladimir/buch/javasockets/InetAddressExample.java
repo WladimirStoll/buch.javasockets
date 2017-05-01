@@ -25,6 +25,30 @@ public class InetAddressExample {
 				System.out.println("--No interfaces found--");
 			} else {
 				while (interfaceList.hasMoreElements()) {
+					/**
+					 * Get and print address(es) of each interface in the list:
+					 * Print the interface’s name: line 15 The getName() method
+					 * returns a local name for the interface. This is usually a
+					 * combination of letters and numbers indicating the type
+					 * and particular instance of the interface—for example,
+					 * “lo0” or “eth0”. Get the addresses associated with the
+					 * interface: The getInetAddresses() method returns another
+					 * Enumeration, this time containing instances of
+					 * InetAddress—one per address associated with the
+					 * interface. Depending on how the host is configured, the
+					 * list may contain only IPv4, only IPv6, or a mixture of
+					 * both types of address. Check for empty list: Iterate
+					 * through the list, printing each address: We check each
+					 * instance to determine which subtype it is. (At this time
+					 * the only subtypes of InetAddress are those listed, but
+					 * conceivably there might be others someday.)
+					 * getHostAddress() method of InetAddress returns a String
+					 * representing the numerical address in the format
+					 * appropriate for its specific type: dotted-quad for v4,
+					 * colonseparated hex for v6. See the synopsis “String
+					 * representations” below for a description of the different
+					 * address formats.
+					 */
 					NetworkInterface iface = interfaceList.nextElement();
 					System.out.println("Interface " + iface.getName() + ":");
 					Enumeration<InetAddress> addrList = iface.getInetAddresses();
